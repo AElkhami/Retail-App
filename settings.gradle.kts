@@ -23,3 +23,5 @@ rootProject.name = "Retail App"
 include(":app")
 include(":productDetail")
 include(":core-ui")
+include(":core")
+include(":core-android")

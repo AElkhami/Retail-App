@@ -38,9 +38,11 @@ import com.elkhami.productdetail.presentation.model.ProductHeaderUiModel
 
 @Composable
 fun ProductDetailScreen(
+    modifier: Modifier = Modifier,
     uiState: ProductDetailUiState
 ) {
     ProductDetailScreenContent(
+        modifier = modifier,
         productHeader = uiState.productHeader,
         productBuy = uiState.productBuy
     )
@@ -48,12 +50,12 @@ fun ProductDetailScreen(
 
 @Composable
 fun ProductDetailScreenContent(
+    modifier: Modifier = Modifier,
     productHeader: ProductHeaderUiModel,
     productBuy: ProductBuyUiModel
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
-
+        modifier = modifier.fillMaxSize()
         ) {
         ProductHeaderSection(
             model = productHeader

@@ -1,9 +1,13 @@
 import org.gradle.kotlin.dsl.project
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
@@ -21,8 +25,11 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+        }
+        release {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -33,17 +40,25 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
     }
 }
 
 dependencies {
 
+    implementation(project(":core"))
     implementation(project(":core-ui"))
+    implementation(project(":core-android"))
+    implementation(project(":productDetail"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(platform(libs.androidx.compose.bom))
@@ -62,4 +77,24 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    // Hilt Navigation Compose
+    implementation(libs.hilt.navigation.compose)
+
+    // Timber (Logging)
+    implementation(libs.timber)
+
+    //LeakCanary
+    debugImplementation(libs.leakCanary)
+
+    //Serialization
+    implementation(libs.kotlinx.serialization.json)
+}
+
+tasks.named("check") {
+    dependsOn("lintDebug", "ktlintCheck")
 }
