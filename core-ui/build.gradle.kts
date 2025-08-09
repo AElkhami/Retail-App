@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -54,4 +55,13 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // Coil
+    implementation(libs.coil.compose)
+
+    // Coil 3 OkHttp
+    implementation(libs.coil.okhttp)
+
+    // Extended material icons
+    implementation(libs.compose.material.icons.extended)
 }
