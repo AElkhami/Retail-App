@@ -112,7 +112,7 @@ class ProductDetailViewModelTest {
     fun `onEvent Retry calls getProductDetails`() = runTest {
         coEvery { getProductDetailUseCase() } returns Result.Success(sampleProduct())
 
-        viewModel.onEvent(ProductDetailEvent.Retry)
+        viewModel.onEvent(ProductDetailEvent.RetryClicked)
         testDispatcher.scheduler.advanceUntilIdle()
 
         assertThat(viewModel.uiState.value.screenState)

@@ -66,7 +66,7 @@ class ProductDetailViewModel @Inject constructor(
             ProductDetailEvent.ShareClicked -> emitEffect(ProductDetailEffect.ShareProduct)
             ProductDetailEvent.FavouriteClicked -> toggleFavourite()
             ProductDetailEvent.AddToCartClicked -> addToCart()
-            ProductDetailEvent.Retry -> retry()
+            ProductDetailEvent.RetryClicked -> retry()
             ProductDetailEvent.BrandClicked -> emitEffect(ProductDetailEffect.NavigateToBrand)
         }
     }

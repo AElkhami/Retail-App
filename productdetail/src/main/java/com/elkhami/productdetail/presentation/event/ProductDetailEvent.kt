@@ -6,5 +6,5 @@ sealed interface ProductDetailEvent {
     data object FavouriteClicked : ProductDetailEvent
     data object AddToCartClicked : ProductDetailEvent
     data object BrandClicked : ProductDetailEvent
-    data object Retry : ProductDetailEvent
+    data object RetryClicked : ProductDetailEvent
 }

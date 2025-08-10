@@ -30,6 +30,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.flowWithLifecycle
+import com.elkhami.core_ui.components.ErrorContent
+import com.elkhami.core_ui.components.LoadingIndicator
 import com.elkhami.core_ui.components.OnlineImage
 import com.elkhami.core_ui.components.ProductTopBar
 import com.elkhami.core_ui.components.RatingStars
@@ -43,6 +45,7 @@ import com.elkhami.productdetail.R
 import com.elkhami.productdetail.presentation.effect.ProductDetailEffect
 import com.elkhami.productdetail.presentation.event.ProductDetailEvent
 import com.elkhami.productdetail.presentation.model.ProductBuyUiModel
+import com.elkhami.productdetail.presentation.model.ProductDetailScreenAction
 import com.elkhami.productdetail.presentation.model.ProductDetailUiState
 import com.elkhami.productdetail.presentation.model.ProductHeaderUiModel
 
@@ -63,12 +66,17 @@ fun ProductDetailScreen(
                 Lifecycle.State.STARTED
             )
             .collect { effect ->
-            when (effect) {
-                is ProductDetailEffect.NavigateBack -> { /* TODO navController.popBackStack() */ }
-                is ProductDetailEffect.ShareProduct -> { /* TODO shareProduct */ }
-                is ProductDetailEffect.NavigateToBrand -> { /* TODO navigateToBrandScreen */ }
+                when (effect) {
+                    is ProductDetailEffect.NavigateBack -> { /* TODO navController.popBackStack() */
+                    }
+
+                    is ProductDetailEffect.ShareProduct -> { /* TODO shareProduct */
+                    }
+
+                    is ProductDetailEffect.NavigateToBrand -> { /* TODO navigateToBrandScreen */
+                    }
+                }
             }
-        }
     }
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -76,11 +84,14 @@ fun ProductDetailScreen(
     ProductDetailScreenContent(
         modifier = modifier,
         screenState = uiState.screenState,
-        onBackClick = { viewModel.onEvent(ProductDetailEvent.BackClicked) },
-        onShareClick = { viewModel.onEvent(ProductDetailEvent.ShareClicked) },
-        onFavouriteClick = { viewModel.onEvent(ProductDetailEvent.FavouriteClicked) },
-        onAddToCart = { viewModel.onEvent(ProductDetailEvent.AddToCartClicked) },
-        onBrandClick = { viewModel.onEvent(ProductDetailEvent.BrandClicked) }
+        action = ProductDetailScreenAction(
+            onBackClick = { viewModel.onEvent(ProductDetailEvent.BackClicked) },
+            onShareClick = { viewModel.onEvent(ProductDetailEvent.ShareClicked) },
+            onFavouriteClick = { viewModel.onEvent(ProductDetailEvent.FavouriteClicked) },
+            onAddToCart = { viewModel.onEvent(ProductDetailEvent.AddToCartClicked) },
+            onBrandClick = { viewModel.onEvent(ProductDetailEvent.BrandClicked) },
+            onRetryClick = { viewModel.onEvent(ProductDetailEvent.RetryClicked) }
+        )
     )
 }
 
@@ -88,11 +99,7 @@ fun ProductDetailScreen(
 fun ProductDetailScreenContent(
     modifier: Modifier = Modifier,
     screenState: ScreenState<ProductDetailUiState.Content>,
-    onBackClick: () -> Unit,
-    onShareClick: () -> Unit,
-    onFavouriteClick: () -> Unit,
-    onAddToCart: () -> Unit,
-    onBrandClick: () -> Unit
+    action: ProductDetailScreenAction
 ) {
     Column(
         modifier = modifier.fillMaxSize()
@@ -101,19 +108,27 @@ fun ProductDetailScreenContent(
             is ScreenState.Content -> {
                 ProductHeaderSection(
                     model = state.data.productHeader,
-                    onBackClick = onBackClick ,
-                    onShareClick = onShareClick,
-                    onFavouriteClick = onFavouriteClick
+                    onBackClick = action.onBackClick,
+                    onShareClick = action.onShareClick,
+                    onFavouriteClick = action.onFavouriteClick
                 )
                 ProductBuySection(
                     model = state.data.productBuy,
-                    onAddToCart = onAddToCart,
-                    onBrandClick = onBrandClick
+                    onAddToCart = action.onAddToCart,
+                    onBrandClick = action.onBrandClick
                 )
             }
 
-            is ScreenState.Error -> {}
-            ScreenState.Loading -> {}
+            is ScreenState.Error -> {
+                ErrorContent(
+                    message = screenState.message.asString(),
+                    onRetry = action.onRetryClick
+                )
+            }
+
+            ScreenState.Loading -> {
+                LoadingIndicator()
+            }
         }
     }
 }
@@ -208,7 +223,7 @@ fun ProductBuySection(
                 )
             }
         }
-        if(model.deliveryTime.isNotBlank()){
+        if (model.deliveryTime.isNotBlank()) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = model.deliveryTime,
@@ -279,11 +294,14 @@ fun ProductDetailScreenPreview() {
                     )
                 )
             ),
-            onBackClick = { },
-            onShareClick = { },
-            onFavouriteClick = { },
-            onAddToCart = { },
-            onBrandClick = { }
+            action = ProductDetailScreenAction(
+                onBackClick = { },
+                onShareClick = { },
+                onFavouriteClick = { },
+                onAddToCart = { },
+                onBrandClick = { },
+                onRetryClick = { }
+            )
         )
     }
 }
@@ -312,11 +330,14 @@ fun ProductDetailScreenPreviewOtherOptions() {
                     )
                 )
             ),
-            onBackClick = { },
-            onShareClick = { },
-            onFavouriteClick = { },
-            onAddToCart = { },
-            onBrandClick = { }
+            action = ProductDetailScreenAction(
+                onBackClick = { },
+                onShareClick = { },
+                onFavouriteClick = { },
+                onAddToCart = { },
+                onBrandClick = { },
+                onRetryClick = { }
+            )
         )
     }
 }
