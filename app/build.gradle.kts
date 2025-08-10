@@ -57,7 +57,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":core-ui"))
     implementation(project(":core-android"))
-    implementation(project(":productDetail"))
+    implementation(project(":productdetail"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

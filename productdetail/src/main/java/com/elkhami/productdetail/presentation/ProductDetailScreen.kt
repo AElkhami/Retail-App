@@ -97,7 +97,6 @@ fun ProductDetailScreenContent(
     Column(
         modifier = modifier.fillMaxSize()
     ) {
-
         when (val state = screenState) {
             is ScreenState.Content -> {
                 ProductHeaderSection(

@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Retail App"
 include(":app")
-include(":productDetail")
+include(":productdetail")
 include(":core-ui")
 include(":core")
 include(":core-android")
