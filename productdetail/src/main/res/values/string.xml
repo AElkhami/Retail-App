@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Product detail -->
+    <string name="price_with_comma">%1$s,</string>
+    <string name="brand_with_chevron">%1$s ›</string>
+    <string name="select_label">Select</string>
+    <string name="reviews_count">Gemiddelde uit %1$,d beoordelingen</string>
+    <string name="sold_by">Verkoop door %1$s</string>
+    <string name="add_to_cart">In winkelwagentje</string>
+    <string name="product_image">Productafbeelding</string>
+</resources>
