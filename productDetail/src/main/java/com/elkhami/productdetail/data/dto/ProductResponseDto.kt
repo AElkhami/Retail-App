@@ -1,5 +1,6 @@
 package com.elkhami.productdetail.data.dto
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -21,6 +22,7 @@ data class ProductResponse(
     data class Image(val url: String?)
     @Serializable
     data class DeliveryWrapper(
+        @SerialName("instock")
         val inStock: InStock?,
         val delivery: Delivery?
     ) {

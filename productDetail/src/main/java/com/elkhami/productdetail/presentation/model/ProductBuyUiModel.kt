@@ -7,6 +7,7 @@ data class ProductBuyUiModel(
     val rating: Double,
     val reviewsCount: Int,
     val inStock: Boolean,
+    val isSelect: Boolean,
     val sellerName: String,
-    val onAddToCart: () -> Unit
+    val deliveryTime: String
 )

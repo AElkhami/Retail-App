@@ -6,6 +6,7 @@ import com.elkhami.productdetail.domain.model.Product
 import com.elkhami.productdetail.domain.model.Rating
 import com.elkhami.productdetail.domain.model.value.ImageUrl
 import com.elkhami.productdetail.domain.model.Brand
+import com.elkhami.productdetail.domain.model.InStock
 import com.elkhami.productdetail.domain.model.Seller
 
 fun ProductResponse.toDomain(): Product {
@@ -21,7 +22,7 @@ fun ProductResponse.toDomain(): Product {
         priceText = price.orEmpty(),
         images = images.orEmpty().map { ImageUrl(it.url.orEmpty()) },
         delivery = DeliveryInfo(
-            inStock = delivery?.inStock?.scarcityLevel.orEmpty(),
+            inStock = InStock(scarcityLevel = delivery?.inStock?.scarcityLevel.orEmpty()),
             description = delivery?.delivery?.description.orEmpty(),
         ),
         seller = Seller(

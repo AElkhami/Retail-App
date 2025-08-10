@@ -8,40 +8,52 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.elkhami.core_ui.R
 import com.elkhami.core_ui.ui.theme.AppTheme
 import com.elkhami.core_ui.ui.theme.LocalAppColors
 import com.elkhami.core_ui.ui.theme.LocalAppDimens
 
 @Composable
 fun StockBadge(
-    text: String,
-    border: Color,
-    textColor: Color
+    inStock: Boolean
 ) {
     val dimens = LocalAppDimens.current
+    val colors = LocalAppColors.current
+
+    val text =
+        if (inStock) stringResource(R.string.in_stock)
+        else stringResource(R.string.out_of_stock)
+    
+    val badgeColor = if (inStock) colors.success else colors.danger
+
     Box(
         modifier = Modifier
-            .border(dimens.one, border, RoundedCornerShape(dimens.smallPadding))
+            .border(
+                dimens.one,
+                badgeColor,
+                RoundedCornerShape(dimens.smallPadding)
+            )
             .padding(horizontal = dimens.spacing, vertical = dimens.xSmallPadding)
     ) {
-        Text(text, color = textColor, style = MaterialTheme.typography.labelMedium)
+        Text(
+            text,
+            color = badgeColor,
+            style = MaterialTheme.typography.labelMedium
+        )
     }
 }
 
 @Preview(
     showBackground = true,
     name = "In Stock"
-    )
+)
 @Composable
-private fun StockBadgePreviewInstock(){
-    val colors = LocalAppColors.current
+private fun StockBadgePreviewInStock() {
     AppTheme {
         StockBadge(
-            text = "Op voorraad",
-            border = colors.success,
-            textColor = colors.success
+            inStock = true
         )
     }
 }
@@ -51,13 +63,10 @@ private fun StockBadgePreviewInstock(){
     name = "Out of Stock"
 )
 @Composable
-private fun StockBadgePreviewOutOfStock(){
-    val colors = LocalAppColors.current
+private fun StockBadgePreviewOutOfStock() {
     AppTheme {
         StockBadge(
-            text = "Niet op voorraad",
-            border = colors.danger,
-            textColor = colors.danger
+            inStock = false
         )
     }
 }

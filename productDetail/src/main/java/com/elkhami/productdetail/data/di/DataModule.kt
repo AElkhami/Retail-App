@@ -5,9 +5,9 @@ import com.elkhami.core.util.JsonParser
 import com.elkhami.core_android.utils.AssetReader
 import com.elkhami.productdetail.data.datasource.AssetProductDataSource
 import com.elkhami.productdetail.data.datasource.ProductDataSource
-import com.elkhami.productdetail.data.repository.AssetProductRepository
-import com.elkhami.productdetail.domain.repository.ProductRepository
-import com.example.discover.data.di.qualifier.ResponseAssetName
+import com.elkhami.productdetail.data.repository.AssetProductDetailRepository
+import com.elkhami.productdetail.domain.repository.ProductDetailRepository
+import com.elkhami.productdetail.data.di.qualifier.ResponseAssetName
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,7 +27,7 @@ object DataModule {
     @Provides
     @Singleton
     @ResponseAssetName
-    fun provideResponseAssetName(): String = "api_response.json"
+    fun provideResponseAssetName(): String = "product.json"
 
     @Provides
     @Singleton
@@ -54,5 +54,5 @@ object DataModule {
     @Singleton
     fun provideProductRepository(
         dataSource: ProductDataSource,
-    ): ProductRepository = AssetProductRepository(dataSource)
+    ): ProductDetailRepository = AssetProductDetailRepository(dataSource)
 }

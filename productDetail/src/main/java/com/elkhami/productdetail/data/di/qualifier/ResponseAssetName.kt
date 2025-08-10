@@ -1,4 +1,4 @@
-package com.example.discover.data.di.qualifier
+package com.elkhami.productdetail.data.di.qualifier
 
 import javax.inject.Qualifier
 

@@ -7,7 +7,7 @@ import com.elkhami.core_android.utils.AssetReader
 import com.elkhami.productdetail.data.dto.ProductResponse
 import com.elkhami.productdetail.data.mapper.toDomain
 import com.elkhami.productdetail.domain.model.Product
-import com.example.discover.data.di.qualifier.ResponseAssetName
+import com.elkhami.productdetail.data.di.qualifier.ResponseAssetName
 import kotlin.coroutines.cancellation.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext

@@ -19,12 +19,12 @@ import org.junit.Test
 
 class AssetProductRepositoryTest {
     @MockK lateinit var dataSource: ProductDataSource
-    private lateinit var repo: AssetProductRepository
+    private lateinit var repo: AssetProductDetailRepository
 
     @Before
     fun setup() {
         MockKAnnotations.init(this)
-        repo = AssetProductRepository(dataSource)
+        repo = AssetProductDetailRepository(dataSource)
     }
 
     @Test

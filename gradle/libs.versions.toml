@@ -24,6 +24,7 @@ javaxInject = "1"
 mockkVersion = "1.14.5"
 googleTruth = "1.4.4"
 coroutinesTest = "1.10.2"
+turbineVersion = "1.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +40,7 @@ kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-t
 mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 google-truth = { module = "com.google.truth:truth", version.ref = "googleTruth" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbineVersion" }
 
 
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
@@ -90,4 +92,7 @@ hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 # KSP
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+
+#Parselize
+kotlin-parselize = { id = "org.jetbrains.kotlin.plugin.parcelize" }
 

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.elkhami.core_ui.ui.theme.AppTheme
+import com.elkhami.productdetail.presentation.ProductDetailScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,9 +22,9 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) { }
-//                    ProductDetailScreen(
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
+                    ProductDetailScreen(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }

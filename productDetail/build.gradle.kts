@@ -89,4 +89,5 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.google.truth)
+    testImplementation(libs.turbine)
 }
