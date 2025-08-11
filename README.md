@@ -10,7 +10,11 @@ While the current scope focuses on product detail features, the architecture and
 ## Screenshots
 
 ### Product Detail Screen
-![Product Detail Screen](screenshots/product_detail_screenshot.png)
+<table>
+  <tr>
+    <td><img src="screenshot/product_detail_screenshot.png" width="250" alt="Repository details screen demo"/></td>
+  </tr>
+</table>
 
 ---
 
