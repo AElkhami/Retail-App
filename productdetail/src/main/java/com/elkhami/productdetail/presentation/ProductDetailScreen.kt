@@ -31,8 +31,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.flowWithLifecycle
 import com.elkhami.core_ui.components.ErrorContent
+import com.elkhami.core_ui.components.ImageCarouselWithIndicator
 import com.elkhami.core_ui.components.LoadingIndicator
-import com.elkhami.core_ui.components.OnlineImage
 import com.elkhami.core_ui.components.ProductTopBar
 import com.elkhami.core_ui.components.RatingStars
 import com.elkhami.core_ui.components.StockBadge
@@ -149,9 +149,9 @@ fun ProductHeaderSection(
             onShareClick = onShareClick,
             onFavouriteClick = onFavouriteClick
         )
-        OnlineImage(
+        ImageCarouselWithIndicator(
             modifier = Modifier.fillMaxWidth(),
-            imageUrl = model.productImage
+            imageUrls = model.productImage
         )
     }
 }
@@ -278,7 +278,7 @@ fun ProductDetailScreenPreview() {
             screenState = ScreenState.Content(
                 ProductDetailUiState.Content(
                     productHeader = ProductHeaderUiModel(
-                        productImage = "",
+                        productImage = emptyList(),
                         isFavourite = false
                     ),
                     productBuy = ProductBuyUiModel(
@@ -314,7 +314,7 @@ fun ProductDetailScreenPreviewOtherOptions() {
             screenState = ScreenState.Content(
                 ProductDetailUiState.Content(
                     productHeader = ProductHeaderUiModel(
-                        productImage = "",
+                        productImage = emptyList(),
                         isFavourite = true
                     ),
                     productBuy = ProductBuyUiModel(
