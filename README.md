@@ -12,7 +12,7 @@ While the current scope focuses on product detail features, the architecture and
 ### Product Detail Screen
 <table>
   <tr>
-    <td><img src="screenshot/product_detail_screenshot.png" width="250" alt="Repository details screen demo"/></td>
+    <td><img src="screenshot/product_detail_screenshot.png" width="250" alt="Product details screen"/></td>
   </tr>
 </table>
 

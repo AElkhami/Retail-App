@@ -1,5 +1,6 @@
 package com.elkhami.productdetail.presentation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -101,8 +102,10 @@ fun ProductDetailScreenContent(
     screenState: ScreenState<ProductDetailUiState.Content>,
     action: ProductDetailScreenAction
 ) {
+    val colors = LocalAppColors.current
+
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize().background(color = colors.surface)
     ) {
         when (val state = screenState) {
             is ScreenState.Content -> {
@@ -306,7 +309,7 @@ fun ProductDetailScreenPreview() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ProductDetailScreenPreviewOtherOptions() {
     AppTheme {
