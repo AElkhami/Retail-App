@@ -16,19 +16,22 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.elkhami.core_ui.R
+import com.elkhami.core_ui.ui.theme.LocalAppColors
 import com.elkhami.core_ui.ui.theme.LocalAppDimens
 
 @Composable
 fun ProductTopBar(
     isFavourite: Boolean,
-    tint: Color = Color(0xFF1E40FF),
     onBackClick: () -> Unit,
     onShareClick: () -> Unit,
     onFavouriteClick: () -> Unit,
 ) {
     val dimens = LocalAppDimens.current
+    val colors = LocalAppColors.current
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,8 +43,8 @@ fun ProductTopBar(
         IconButton(onClick = onBackClick) {
             Icon(
                 imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
-                contentDescription = "Back",
-                tint = tint
+                contentDescription = stringResource(R.string.back),
+                tint = colors.primary
             )
         }
 
@@ -49,13 +52,13 @@ fun ProductTopBar(
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onShareClick) {
-                Icon(Icons.Outlined.Share, "Share", tint = tint)
+                Icon(Icons.Outlined.Share, stringResource(R.string.share), tint = colors.primary)
             }
             IconButton(onClick = onFavouriteClick) {
                 Icon(
                     imageVector = if (isFavourite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                    contentDescription = "Favorite",
-                    tint = tint
+                    contentDescription = stringResource(R.string.favorite),
+                    tint = colors.primary
                 )
             }
         }
