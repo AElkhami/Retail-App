@@ -8,7 +8,7 @@ import com.elkhami.productdetail.presentation.model.ProductHeaderUiModel
 fun Product.toUiContent(
 ): ProductDetailUiState.Content {
     val header = ProductHeaderUiModel(
-        productImage = images.firstOrNull()?.value.orEmpty(),
+        productImage = images.map { it.value },
         isFavourite = false
     )
     val buy = ProductBuyUiModel(

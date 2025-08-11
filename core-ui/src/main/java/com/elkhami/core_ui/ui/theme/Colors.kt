@@ -25,7 +25,7 @@ private val ProductRed = Color(0xFFE53935)
 private val ProductGreen = Color(0xFF28A745)
 
 val LightAppColors = AppColors(
-    primary = Color(0xFF007BFF),
+    primary = Color(0xFF0005B1),
     background = Color.White,
     surface = Color(0xFFF7F7F7),
     textPrimary = Color(0xFF292D31),
@@ -38,7 +38,7 @@ val LightAppColors = AppColors(
 )
 
 val DarkAppColors = AppColors(
-    primary = Color(0xFF64B5F6),
+    primary = Color(0xFF0005B1),
     background = Color(0xFF1E1E1E),
     surface = Color(0xFF121212),
     textPrimary = Color.White,

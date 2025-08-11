@@ -9,7 +9,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.elkhami.core_ui.ui.theme.AppTheme
 import com.elkhami.core_ui.ui.theme.LocalAppColors
@@ -26,8 +25,7 @@ fun LoadingIndicator(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(colors.background)
-            .testTag("LoadingIndicator"),
+            .background(colors.background),
         contentAlignment = Alignment.Center
     ) {
         Column(
